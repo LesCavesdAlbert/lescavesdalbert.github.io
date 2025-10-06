@@ -12,223 +12,104 @@
       --or: #d4af37;
       --fond: #faf9f6;
     }
-
+    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Open Sans', sans-serif;
-      background-color: var(--fond);
-      color: #222;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+      background-color: var(--fond); color: #222;
+      scroll-behavior: smooth; overflow-x: hidden;
     }
-
-    /* Animations */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-
-    [data-animate].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* HEADER */
     header {
       background-color: var(--bleu);
       color: var(--or);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 40px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 40px; position: fixed; width: 100%; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
-
-    header img {
-      height: 55px;
-      width: auto;
-    }
-
+    header img { height: 55px; width: auto; }
     nav a {
-      color: var(--or);
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 16px;
-      transition: color 0.3s ease;
+      color: var(--or); text-decoration: none; font-weight: 600;
+      margin: 0 16px; transition: color 0.3s ease;
     }
+    nav a:hover { color: white; }
 
-    nav a:hover {
-      color: white;
-    }
-
-    /* BANNIÈRE */
     .banner {
-      margin-top: 80px;
-      height: 75vh;
-      background-image: url('Scan%20pour%20nous%20rejoindre.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      letter-spacing: 2px;
-      text-align: center;
+      margin-top: 80px; height: 70vh;
+      background: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+      url('Scan%20pour%20nous%20rejoindre.jpg') center/cover no-repeat;
+      display: flex; justify-content: center; align-items: center;
+      font-family: 'Playfair Display', serif; font-size: 3rem;
+      color: white; text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      letter-spacing: 1px;
     }
 
-    /* SECTIONS */
     section {
-      padding: 5rem 2rem;
-      max-width: 1000px;
-      margin: auto;
+      max-width: 1000px; margin: auto; padding: 5rem 2rem;
     }
-
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.3rem;
-      color: var(--bleu);
+      font-size: 2.3rem; color: var(--bleu);
       border-left: 6px solid var(--or);
-      padding-left: 10px;
-      margin-bottom: 2rem;
+      padding-left: 10px; margin-bottom: 1.5rem;
     }
+    p { line-height: 1.8; font-size: 1.1rem; }
 
-    p {
-      line-height: 1.8;
-      font-size: 1.1rem;
-    }
+    /* Animation au scroll */
+    [data-animate] { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    [data-animate].visible { opacity: 1; transform: translateY(0); }
 
-    /* POLES */
+    /* Pôles */
     .poles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.8rem; margin-top: 2rem;
     }
-
     .pole {
-      background-color: white;
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      background: white; border-radius: 15px; padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pole:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .pole button {
-      background-color: var(--bleu);
-      color: var(--or);
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 15px;
     }
+    .pole:hover { transform: translateY(-8px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+    .pole h3 { color: var(--bleu); margin-bottom: 0.5rem; }
+    .pole em { color: #666; }
 
-    .pole button:hover {
-      background-color: var(--or);
-      color: var(--bleu);
+    .details {
+      display: none; background: #fffbea; margin-top: 1rem;
+      border-left: 5px solid var(--or); padding: 1.5rem;
+      border-radius: 10px; animation: fade 0.5s ease;
+      text-align: left;
     }
+    @keyframes fade { from {opacity:0;} to {opacity:1;} }
 
-    /* ADHESION */
+    .details h4 { color: var(--bleu); margin-bottom: 0.3rem; }
+    .members { margin-top: 1rem; font-style: italic; color: #444; }
+
+    /* Adhésion */
     .adhesion {
-      background-color: #fffbea;
-      border-left: 5px solid var(--or);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background: #fffbea; border-left: 5px solid var(--or);
+      padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
+    .adhesion ul { line-height: 2; }
 
-    .adhesion ul {
-      line-height: 2;
-    }
-
-    /* MODALES */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 200;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-
-    .modal-content {
-      background-color: white;
-      margin: 10% auto;
-      padding: 2rem;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      animation: fadeIn 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .close {
-      float: right;
-      font-size: 1.5rem;
-      color: var(--bleu);
-      cursor: pointer;
-    }
-
-    /* FOOTER */
     footer {
-      text-align: center;
-      background-color: var(--bleu);
-      color: white;
-      padding: 3rem 1rem;
-      margin-top: 4rem;
+      background-color: var(--bleu); color: white;
+      text-align: center; padding: 3rem 1rem; margin-top: 4rem;
     }
-
     footer img {
-      height: 60px;
-      width: auto;
-      margin: 10px;
-      opacity: 0.9;
-      transition: transform 0.3s ease;
+      height: 60px; margin: 10px; transition: transform 0.3s ease; vertical-align: middle;
     }
+    footer img:hover { transform: scale(1.05); }
 
-    footer img:hover {
-      transform: scale(1.05);
-    }
-
-    @media screen and (max-width: 768px) {
-      .banner {
-        font-size: 2rem;
-        height: 55vh;
-      }
-      nav a {
-        font-size: 0.9rem;
-      }
+    @media screen and (max-width:768px){
+      .banner { font-size: 2rem; height: 50vh; }
+      nav a { font-size: 0.9rem; margin: 0 10px; }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <img src="Logo.png" alt="Logo Les Caves d'Albert" />
+    <img src="Logo.png" alt="Logo Les Caves d'Albert">
     <nav>
       <a href="#about">À propos</a>
       <a href="#poles">Nos pôles</a>
@@ -237,33 +118,42 @@
     </nav>
   </header>
 
-  <div class="banner">
-    LES CAVES D’ALBERT
-  </div>
+  <div class="banner">LES CAVES D’ALBERT</div>
 
   <section id="about" data-animate>
     <h2>À propos</h2>
-    <p><strong>Les Caves d’Albert</strong> est l’association œnologique de l’Albert School, fondée par des étudiants passionnés de vin, de culture et de convivialité. Elle vise à faire découvrir le patrimoine viticole français et à créer des moments d’échanges entre étudiants autour du vin et des spiritueux.</p>
-    <p>L’association organise des événements bilingues, afin de faire découvrir le savoir-faire français à nos étudiants internationaux.</p>
+    <p><strong>Les Caves d’Albert</strong> est l’association œnologique de l’Albert School, créée par des étudiants passionnés de vin et de convivialité. Elle promeut la culture viticole française et crée des moments d’échanges autour du vin et des spiritueux.</p>
+    <p>L’association organise également des événements bilingues afin d’inclure tous les étudiants, y compris les internationaux.</p>
   </section>
 
   <section id="poles" data-animate>
     <h2>Nos pôles</h2>
     <div class="poles">
-      <div class="pole">
-        <h3>Pôle Communication</h3>
-        <p><em>Poste vacant</em></p>
-        <button onclick="openModal('comm')">En savoir plus</button>
+      <div class="pole" onclick="toggleDetails('comm')">
+        <h3>Pôle Communication</h3><em>Poste vacant</em>
+        <div id="comm" class="details">
+          <h4>Rôle du pôle :</h4>
+          <p>Ce pôle gère la communication interne et externe, les réseaux sociaux, la création visuelle et la mise en avant des événements.</p>
+          <div class="members"><strong>Membres :</strong> Aucun pour l’instant</div>
+        </div>
       </div>
-      <div class="pole">
-        <h3>Pôle Démarchage</h3>
-        <p><em>Poste vacant</em></p>
-        <button onclick="openModal('dem')">En savoir plus</button>
+
+      <div class="pole" onclick="toggleDetails('dem')">
+        <h3>Pôle Démarchage</h3><em>Poste vacant</em>
+        <div id="dem" class="details">
+          <h4>Rôle du pôle :</h4>
+          <p>Le pôle Démarchage développe les partenariats et sponsors, établit les relations avec les producteurs, cavistes et marques partenaires.</p>
+          <div class="members"><strong>Membres :</strong> Aucun pour l’instant</div>
+        </div>
       </div>
-      <div class="pole">
-        <h3>Pôle Événementiel</h3>
-        <p><em>Poste vacant</em></p>
-        <button onclick="openModal('event')">En savoir plus</button>
+
+      <div class="pole" onclick="toggleDetails('event')">
+        <h3>Pôle Événementiel</h3><em>Poste vacant</em>
+        <div id="event" class="details">
+          <h4>Rôle du pôle :</h4>
+          <p>Ce pôle planifie, organise et coordonne tous les événements : dégustations, masterclass, visites de domaines et soirées thématiques.</p>
+          <div class="members"><strong>Membres :</strong> Aucun pour l’instant</div>
+        </div>
       </div>
     </div>
   </section>
@@ -271,13 +161,13 @@
   <section id="adhesion" data-animate>
     <h2>Adhésion</h2>
     <div class="adhesion">
-      <p>Adhérer, c’est rejoindre une communauté passionnée, vivre des expériences uniques autour du vin et profiter d’avantages exclusifs 🍷</p>
+      <p>Adhérer, c’est rejoindre une communauté passionnée et profiter d’avantages exclusifs tout au long de l’année 🍷</p>
       <ul>
         <li>🎟️ Accès prioritaire aux dégustations</li>
         <li>💸 Tarifs réduits sur tous les événements</li>
-        <li>🥂 Masterclass et soirées privées réservées aux membres</li>
-        <li>📲 Accès à la communauté privée</li>
-        <li>🤝 Réductions chez nos partenaires cavistes et producteurs</li>
+        <li>🥂 Soirées et masterclass réservées aux membres</li>
+        <li>📲 Communauté privée</li>
+        <li>🤝 Réductions chez nos partenaires</li>
       </ul>
     </div>
   </section>
@@ -290,63 +180,29 @@
   </section>
 
   <footer>
-    <p>© 2025 Les Caves d’Albert – Association loi 1901 | Albert School x Mines Paris PSL</p>
+    <p>© 2025 Les Caves d’Albert – Association loi 1901 | Albert School × Mines Paris PSL</p>
     <div>
       <img src="Logo.png" alt="Les Caves d'Albert">
-      <img src="Logo AS x Mines PSL.png" alt="Albert School x Mines PSL">
+      <img src="Logo_AS_x_Mines_PSL.png" alt="Albert School x Mines PSL">
     </div>
   </footer>
 
-  <!-- MODALES -->
-  <div id="comm" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('comm')">&times;</span>
-      <h3>Pôle Communication</h3>
-      <p><strong>Capitaine :</strong> Poste vacant</p>
-      <p>Le pôle communication gère les visuels, réseaux sociaux et la communication interne et externe de l’association.</p>
-    </div>
-  </div>
-
-  <div id="dem" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('dem')">&times;</span>
-      <h3>Pôle Démarchage</h3>
-      <p><strong>Capitaine :</strong> Poste vacant</p>
-      <p>Le pôle démarchage établit des partenariats avec des producteurs, cavistes et entreprises pour soutenir nos activités.</p>
-    </div>
-  </div>
-
-  <div id="event" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('event')">&times;</span>
-      <h3>Pôle Événementiel</h3>
-      <p><strong>Capitaine :</strong> Poste vacant</p>
-      <p>Le pôle événementiel organise les dégustations, masterclass et sorties œnologiques pour nos membres.</p>
-    </div>
-  </div>
-
   <script>
-    // MODALES
-    function openModal(id) {
-      document.getElementById(id).style.display = 'block';
-    }
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-    window.onclick = function(e) {
-      document.querySelectorAll('.modal').forEach(m => {
-        if (e.target == m) m.style.display = 'none';
-      });
-    };
-
-    // ANIMATIONS AU SCROLL
+    // Apparition progressive
     const elements = document.querySelectorAll('[data-animate]');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    elements.forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    },{threshold:0.2});
+    elements.forEach(el=>observer.observe(el));
+
+    // Déploiement des pôles
+    function toggleDetails(id){
+      const d = document.getElementById(id);
+      const all = document.querySelectorAll('.details');
+      all.forEach(el=>{ if(el!==d) el.style.display='none'; });
+      d.style.display = (d.style.display==='block') ? 'none' : 'block';
+      d.scrollIntoView({behavior:'smooth', block:'center'});
+    }
   </script>
 </body>
 </html>
