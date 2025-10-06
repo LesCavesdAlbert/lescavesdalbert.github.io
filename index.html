@@ -19,6 +19,7 @@
       background-color: var(--fond); color: #222;
       scroll-behavior: smooth; overflow-x: hidden;
     }
+
     header {
       background-color: var(--bleu);
       color: var(--or);
@@ -52,7 +53,7 @@
       border-left: 6px solid var(--or);
       padding-left: 10px; margin-bottom: 1.5rem;
     }
-    p { line-height: 1.8; font-size: 1.1rem; }
+    p { line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.2rem; }
 
     /* Animation au scroll */
     [data-animate] { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
@@ -95,10 +96,14 @@
       background-color: var(--bleu); color: white;
       text-align: center; padding: 3rem 1rem; margin-top: 4rem;
     }
-    footer img {
-      height: 60px; margin: 10px; transition: transform 0.3s ease; vertical-align: middle;
+    .footer-logos {
+      margin-top: 1rem;
+      display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px;
     }
-    footer img:hover { transform: scale(1.05); }
+    .footer-logos img {
+      max-height: 70px; width: auto; opacity: 0.95; transition: transform 0.3s ease;
+    }
+    .footer-logos img:hover { transform: scale(1.05); }
 
     @media screen and (max-width:768px){
       .banner { font-size: 2rem; height: 50vh; }
@@ -121,9 +126,18 @@
   <div class="banner">LES CAVES D’ALBERT</div>
 
   <section id="about" data-animate>
-    <h2>À propos</h2>
-    <p><strong>Les Caves d’Albert</strong> est l’association œnologique de l’Albert School, créée par des étudiants passionnés de vin et de convivialité. Elle promeut la culture viticole française et crée des moments d’échanges autour du vin et des spiritueux.</p>
-    <p>L’association organise également des événements bilingues afin d’inclure tous les étudiants, y compris les internationaux.</p>
+    <h2>🏛️ À propos</h2>
+    <p>Les Caves d’Albert est l’association œnologique de l’Albert School, fondée par des étudiants pour des étudiants passionnés de vin, de culture française et de convivialité.</p>
+    <p>Notre mission est de promouvoir le patrimoine viticole et gastronomique français, tout en créant des moments d’échanges authentiques et pédagogiques entre étudiants, professeurs et professionnels du secteur.</p>
+    <p>L'association s’inscrit dans une démarche de transmission du savoir-faire français et de découverte sensorielle. Elle met en avant l’art de vivre à la française, à travers des ateliers, dégustations et visites de domaines viticoles, où se rencontrent curiosité, élégance et plaisir du partage.</p>
+    <p>Les Caves d’Albert ont également pour vocation d’être un pont culturel entre les étudiants français et internationaux de l’école. C’est pourquoi la plupart de nos activités sont bilingues (français / anglais), afin de permettre à chacun de découvrir l’univers du vin et des spiritueux, quelle que soit sa culture d’origine.</p>
+    <p><strong>Au-delà de la dégustation, l’association valorise :</strong></p>
+    <p>🍇 L’apprentissage : initiation à l’œnologie, à la viticulture durable et à l’économie du vin.<br>
+    🤝 La convivialité : création de moments de rencontre et de cohésion entre promotions et pôles.<br>
+    🇫🇷 La culture : mise en lumière du terroir, des maisons emblématiques et des artisans du goût.<br>
+    🌍 L’ouverture internationale : promotion du savoir-faire français auprès des étudiants du monde entier.<br>
+    💡 L’élégance et la créativité : image raffinée, moderne et responsable de la culture du vin.</p>
+    <p>En somme, Les Caves d’Albert ne se résume pas à une simple association de dégustation : c’est une communauté d’étudiants curieux et passionnés, qui souhaitent apprendre, partager et perpétuer les valeurs du vin français — respect, transmission et plaisir.</p>
   </section>
 
   <section id="poles" data-animate>
@@ -181,9 +195,9 @@
 
   <footer>
     <p>© 2025 Les Caves d’Albert – Association loi 1901 | Albert School × Mines Paris PSL</p>
-    <div>
+    <div class="footer-logos">
       <img src="Logo.png" alt="Les Caves d'Albert">
-      <img src="Logo_AS_x_Mines_PSL.png" alt="Albert School x Mines PSL">
+      <img src="Logo_AS_x_Mines_PSL.png" alt="Albert School x Mines Paris PSL">
     </div>
   </footer>
 
