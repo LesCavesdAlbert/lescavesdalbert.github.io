@@ -55,11 +55,9 @@
     }
     p { line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.2rem; }
 
-    /* Animation au scroll */
     [data-animate] { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
     [data-animate].visible { opacity: 1; transform: translateY(0); }
 
-    /* Pôles */
     .poles {
       display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
       gap: 1.8rem; margin-top: 2rem;
@@ -82,15 +80,36 @@
     }
     @keyframes fade { from {opacity:0;} to {opacity:1;} }
 
-    .details h4 { color: var(--bleu); margin-bottom: 0.3rem; }
-    .members { margin-top: 1rem; font-style: italic; color: #444; }
-
-    /* Adhésion */
     .adhesion {
       background: #fffbea; border-left: 5px solid var(--or);
       padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .adhesion ul { line-height: 2; }
+
+    /* Section équipe */
+    .team {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+      margin-top: 3rem;
+    }
+    .member {
+      text-align: center; background: white; padding: 2rem;
+      border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      width: 280px;
+    }
+    .member:hover { transform: translateY(-6px); }
+    .member img {
+      width: 180px; height: 180px; border-radius: 50%;
+      object-fit: cover; border: 3px solid var(--or);
+      margin-bottom: 1rem;
+    }
+    .member h3 {
+      margin: 0.5rem 0 0.2rem; color: var(--bleu);
+      font-family: 'Playfair Display', serif;
+    }
+    .member p {
+      margin: 0.2rem 0; font-size: 0.95rem; color: #444;
+    }
 
     footer {
       background-color: var(--bleu); color: white;
@@ -117,6 +136,7 @@
     <img src="Logo.png" alt="Logo Les Caves d'Albert">
     <nav>
       <a href="#about">À propos</a>
+      <a href="#team">Équipe</a>
       <a href="#poles">Nos pôles</a>
       <a href="#adhesion">Adhésion</a>
       <a href="#contact">Contact</a>
@@ -138,6 +158,22 @@
     🌍 L’ouverture internationale : promotion du savoir-faire français auprès des étudiants du monde entier.<br>
     💡 L’élégance et la créativité : image raffinée, moderne et responsable de la culture du vin.</p>
     <p>En somme, Les Caves d’Albert ne se résume pas à une simple association de dégustation : c’est une communauté d’étudiants curieux et passionnés, qui souhaitent apprendre, partager et perpétuer les valeurs du vin français — respect, transmission et plaisir.</p>
+  </section>
+
+  <section id="team" data-animate>
+    <h2>👥 Notre équipe</h2>
+    <div class="team">
+      <div class="member">
+        <img src="Vignette Max.png" alt="Maxandre Michel">
+        <h3>Maxandre MICHEL</h3>
+        <p>Président – Étudiant en Master 2<br>Data for Business</p>
+      </div>
+      <div class="member">
+        <img src="Vignette Louis.png" alt="Louis Pimont Nishimura">
+        <h3>Louis PIMONT-NISHIMURA</h3>
+        <p>Vice-président & Trésorier – Étudiant en Master 1<br>Data for Business</p>
+      </div>
+    </div>
   </section>
 
   <section id="poles" data-animate>
@@ -197,19 +233,19 @@
     <p>© 2025 Les Caves d’Albert – Association loi 1901 | Albert School × Mines Paris PSL</p>
     <div class="footer-logos">
       <img src="Logo.png" alt="Les Caves d'Albert">
-      <img src="Logo_AS_x_Mines_PSL.png" alt="Albert School x Mines Paris PSL">
+      <img src="Logo_AS_x_Mines_PSL.png" alt="Albert School x Mines PSL">
     </div>
   </footer>
 
   <script>
-    // Apparition progressive
+    // Animation au scroll
     const elements = document.querySelectorAll('[data-animate]');
     const observer = new IntersectionObserver(entries=>{
       entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
     },{threshold:0.2});
     elements.forEach(el=>observer.observe(el));
 
-    // Déploiement des pôles
+    // Déploiement pôles
     function toggleDetails(id){
       const d = document.getElementById(id);
       const all = document.querySelectorAll('.details');
