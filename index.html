@@ -4,30 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Les Caves d'Albert</title>
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
+    :root {
+      --bleu: #0a1f44;
+      --or: #d4af37;
+      --fond: #faf9f6;
+    }
 
     body {
       margin: 0;
       padding: 0;
       font-family: 'Open Sans', sans-serif;
-      background-color: #faf9f6;
-      color: #2b2b2b;
+      background-color: var(--fond);
+      color: #222;
+      scroll-behavior: smooth;
     }
 
-    /* --- HEADER --- */
+    /* HEADER */
     header {
-      background-color: #0a1f44;
-      color: #d4af37;
+      background-color: var(--bleu);
+      color: var(--or);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px;
+      padding: 12px 40px;
       position: fixed;
       width: 100%;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     }
 
     header img {
@@ -36,108 +43,169 @@
     }
 
     nav a {
-      color: #d4af37;
+      color: var(--or);
+      margin: 0 18px;
       text-decoration: none;
-      font-weight: bold;
-      margin: 0 15px;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #fff;
+      color: white;
     }
 
-    /* --- BANNIÈRE --- */
+    /* BANNIERE */
     .banner {
-      background-image: url('https://images.unsplash.com/photo-1603052875891-36e8b3da59d1?auto=format&fit=crop&w=1600&q=80');
+      margin-top: 80px;
+      height: 75vh;
+      background-image: url('Scan%20pour%20nous%20rejoindre.jpg');
       background-size: cover;
       background-position: center;
-      height: 70vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
       font-family: 'Playfair Display', serif;
       font-size: 3rem;
-      font-weight: 700;
+      letter-spacing: 2px;
       text-align: center;
-      margin-top: 80px;
     }
 
+    /* SECTIONS */
     section {
-      padding: 3rem 1.5rem;
-      max-width: 900px;
+      padding: 4rem 1.5rem;
+      max-width: 1000px;
       margin: auto;
     }
 
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: #0a1f44;
-      border-bottom: 2px solid #d4af37;
-      display: inline-block;
-      padding-bottom: 5px;
+      font-size: 2.2rem;
+      color: var(--bleu);
+      border-left: 5px solid var(--or);
+      padding-left: 10px;
+      margin-bottom: 1.5rem;
     }
 
     p {
-      font-size: 1.05rem;
-      line-height: 1.6rem;
+      line-height: 1.7;
+      font-size: 1.1rem;
     }
 
+    /* POLES */
     .poles {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .pole {
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 1.5rem;
-      background-color: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      border-radius: 15px;
+      padding: 1.8rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
       transition: transform 0.3s ease;
     }
 
     .pole:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
     }
 
+    .pole button {
+      background-color: var(--bleu);
+      color: var(--or);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .pole button:hover {
+      background-color: var(--or);
+      color: var(--bleu);
+    }
+
+    /* ADHESION */
     .adhesion {
       background-color: #fffbea;
-      border-left: 5px solid #d4af37;
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin-top: 1rem;
+      border-left: 5px solid var(--or);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    ul {
-      line-height: 1.8;
+    .adhesion ul {
+      line-height: 1.9;
+    }
+
+    /* MODALES */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    .close {
+      float: right;
+      font-size: 1.5rem;
+      color: var(--bleu);
+      cursor: pointer;
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      background-color: #0a1f44;
-      color: #fff;
-      font-size: 0.95rem;
+      background-color: var(--bleu);
+      color: white;
+      padding: 2rem;
       margin-top: 3rem;
+    }
+
+    footer img {
+      height: 50px;
+      opacity: 0.9;
+      margin-top: 15px;
     }
 
     @media screen and (max-width: 768px) {
       .banner {
         font-size: 2rem;
-        height: 50vh;
+        height: 55vh;
       }
-      nav {
+      nav a {
         font-size: 0.9rem;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <img src="Logo.png" alt="Logo Les Caves d'Albert" />
@@ -145,7 +213,6 @@
       <a href="#about">À propos</a>
       <a href="#poles">Nos pôles</a>
       <a href="#adhesion">Adhésion</a>
-      <a href="#events">Événements</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -156,40 +223,46 @@
 
   <section id="about">
     <h2>À propos</h2>
-    <p><strong>Les Caves d’Albert</strong> est l’association œnologique de l’Albert School, fondée par des étudiants passionnés de vin et de convivialité. Notre mission : faire découvrir le patrimoine viticole français et les savoir-faire artisanaux, à travers des dégustations, masterclass et événements culturels.</p>
-    <p>Nous organisons également des événements en anglais pour permettre à nos étudiants internationaux de participer pleinement à cette aventure gustative et culturelle.</p>
+    <p><strong>Les Caves d’Albert</strong> est l’association œnologique de l’Albert School, créée par des étudiants passionnés de vin, de culture et de convivialité. Son objectif est de promouvoir la découverte du patrimoine viticole français auprès des étudiants — français et internationaux — au travers d’ateliers, dégustations et rencontres avec des professionnels.</p>
   </section>
 
   <section id="poles">
     <h2>Nos pôles</h2>
     <div class="poles">
-      <div class="pole"><h3>Pôle Communication</h3><p><em>Poste vacant</em></p></div>
-      <div class="pole"><h3>Pôle Démarchage</h3><p><em>Poste vacant</em></p></div>
-      <div class="pole"><h3>Pôle Événementiel</h3><p><em>Poste vacant</em></p></div>
+      <div class="pole">
+        <h3>Pôle Communication</h3>
+        <p><em>Poste vacant</em></p>
+        <button onclick="openModal('comm')">En savoir plus</button>
+      </div>
+      <div class="pole">
+        <h3>Pôle Démarchage</h3>
+        <p><em>Poste vacant</em></p>
+        <button onclick="openModal('dem')">En savoir plus</button>
+      </div>
+      <div class="pole">
+        <h3>Pôle Événementiel</h3>
+        <p><em>Poste vacant</em></p>
+        <button onclick="openModal('event')">En savoir plus</button>
+      </div>
     </div>
   </section>
 
   <section id="adhesion">
-    <h2>Que comprend l’adhésion aux Caves d’Albert ?</h2>
+    <h2>Que comprend l’adhésion ?</h2>
     <div class="adhesion">
-      <p>Adhérer, c’est entrer dans un cercle de passionnés, vivre des expériences uniques autour du vin et des spiritueux, et accéder à des avantages privilégiés tout au long de l’année 🍷</p>
+      <p>Adhérer, c’est rejoindre une communauté passionnée, vivre des expériences uniques autour du vin et des spiritueux, et profiter d’avantages exclusifs 🍷</p>
       <ul>
-        <li>🎟️ <strong>Accès prioritaire aux dégustations</strong> : ventes en avant-première, place garantie à chaque événement.</li>
-        <li>💸 <strong>Tarifs réduits</strong> : tarifs préférentiels sur les dégustations, ateliers et notre future marketplace.</li>
-        <li>🥂 <strong>Événements exclusifs</strong> : soirées privées, masterclass, escapades dans les vignes.</li>
-        <li>📲 <strong>Communauté privée</strong> : groupe WhatsApp/Discord pour échanger et partager.</li>
-        <li>🤝 <strong>Réductions partenaires</strong> : cavistes, bars à vin, producteurs sélectionnés.</li>
+        <li>🎟️ Accès prioritaire aux dégustations</li>
+        <li>💸 Tarifs réduits sur les événements</li>
+        <li>🥂 Soirées et masterclass réservées aux membres</li>
+        <li>📲 Accès à la communauté privée</li>
+        <li>🤝 Réductions chez nos partenaires</li>
       </ul>
     </div>
   </section>
 
-  <section id="events">
-    <h2>Événements à venir</h2>
-    <p>Les prochains rendez-vous œnologiques seront annoncés bientôt 🍇</p>
-  </section>
-
   <section id="contact">
-    <h2>Nous contacter</h2>
+    <h2>Contact</h2>
     <p>📍 18, rue Paradis, 75010 Paris<br>
        📧 <a href="mailto:mmichel@albertschool.com">mmichel@albertschool.com</a><br>
        📸 Instagram : <a href="https://www.instagram.com/LesCavesDalbert" target="_blank">@LesCavesDalbert</a></p>
@@ -197,6 +270,49 @@
 
   <footer>
     <p>© 2025 Les Caves d’Albert – Association loi 1901 | Albert School</p>
+    <img src="Logo.png" alt="Logo Les Caves d'Albert">
   </footer>
+
+  <!-- MODALES -->
+  <div id="comm" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('comm')">&times;</span>
+      <h3>Pôle Communication</h3>
+      <p><strong>Capitaine :</strong> Poste vacant</p>
+      <p>Ce pôle gère la communication interne et externe : visuels, réseaux sociaux, affiches et identité visuelle des événements.</p>
+    </div>
+  </div>
+
+  <div id="dem" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('dem')">&times;</span>
+      <h3>Pôle Démarchage</h3>
+      <p><strong>Capitaine :</strong> Poste vacant</p>
+      <p>Ce pôle développe les partenariats, les sponsors et les relations avec les producteurs et cavistes.</p>
+    </div>
+  </div>
+
+  <div id="event" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('event')">&times;</span>
+      <h3>Pôle Événementiel</h3>
+      <p><strong>Capitaine :</strong> Poste vacant</p>
+      <p>Ce pôle s’occupe de la logistique et de l’organisation des événements : dégustations, masterclass et voyages œnologiques.</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    window.onclick = function(e) {
+      document.querySelectorAll('.modal').forEach(m => {
+        if (e.target == m) m.style.display = 'none';
+      });
+    };
+  </script>
 </body>
 </html>
