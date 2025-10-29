@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Les Caves d'Albert – Association œnologique</title>
+  <link rel="icon" type="image/png" href="Logo.png" />
+  <!-- Typographies premium -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bleu:#0a1f44;
+      --or:#d4af37;
+      --fond:#f7f5ef; /* blanc cassé chic */
+      --encre:#222;
+      --ombre:0 10px 30px rgba(0,0,0,.12);
+      --rayon:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--fond);color:var(--encre);font-family:'Lato',sans-serif;scroll-behavior:smooth;overflow-x:hidden}
+
+    /* ---------------- HEADER GLASS ---------------- */
+    header{
+      position:fixed;inset:0 0 auto 0;height:74px;z-index:1000;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 28px;
+      backdrop-filter:saturate(130%) blur(10px);
+      background:rgba(10,31,68,.6);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    header .brand{display:flex;align-items:center;gap:14px;color:#fff}
+    header .brand img{height:48px;width:auto}
+    header .brand h1{margin:0;font:700 20px/1 'Playfair Display',serif;letter-spacing:.5px;color:#fff}
+    nav a{
+      color:#f6e9c8;text-decoration:none;margin:0 14px;font-weight:700;letter-spacing:.4px;
+      position:relative;transition:.25s;
+    }
+    nav a:hover,nav a.active{color:#fff}
+    nav a.active::after{
+      content:"";position:absolute;left:0;right:0;bottom:-8px;margin:auto;width:18px;height:2px;background:var(--or);border-radius:2px;
+    }
+
+    /* ---------------- BANNIÈRE PARALLAXE ---------------- */
+    .hero{
+      margin-top:74px;height:72vh;min-height:520px;display:grid;place-items:center;text-align:center;color:#fff;
+      background:
+        linear-gradient(180deg,rgba(10,31,68,.55),rgba(10,31,68,.65)),
+        url('Scan%20pour%20nous%20rejoindre.jpg') center/cover no-repeat fixed;
+      box-shadow:var(--ombre);
+    }
+    .hero h2{
+      font:700 clamp(32px,6vw,64px)/1.05 'Playfair Display',serif;letter-spacing:.8px;margin:0 16px 10px;
+      text-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+    .hero p{
+      margin:0 20px;font-weight:300;letter-spacing:.3px;opacity:.95;max-width:860px
+    }
+    .cta{
+      margin-top:24px;display:inline-block;padding:12px 18px;border-radius:999px;
+      background:linear-gradient(135deg,var(--or),#ffd97a);color:#1d1d1d;font-weight:800;text-decoration:none;
+      box-shadow:0 8px 24px rgba(212,175,55,.35);transition:transform .2s;
+    }
+    .cta:hover{transform:translateY(-2px)}
+
+    /* ---------------- SECTIONS GÉNÉRIQUES ---------------- */
+    section{max-width:1140px;margin:auto;padding:84px 22px;position:relative}
+    section h3{
+      font:700 clamp(26px,4vw,36px)/1.2 'Playfair Display',serif;color:var(--bleu);
+      margin:0 0 22px;position:relative;padding-left:16px
+    }
+    section h3::before{
+      content:"";position:absolute;left:0;top:.4em;width:6px;height:1.2em;background:var(--or);border-radius:3px
+    }
+    section p{font-size:18px;line-height:1.8;margin:.6rem 0}
+
+    /* Filigrane logo sur toutes les sections (sauf hero) */
+    section::after{
+      content:"";position:absolute;inset:auto -80px -40px auto;width:220px;height:220px;opacity:.06;
+      background:url('Logo.png') center/contain no-repeat;pointer-events:none;
+      filter:grayscale(.1) contrast(110%);
+    }
+
+    /* Apparition au scroll */
+    [data-animate]{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+    [data-animate].visible{opacity:1;transform:none}
+
+    /* ---------------- À PROPOS (mise en page alternée) ---------------- */
+    .grid-about{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+    .about-card{
+      background:#fff;border-radius:var(--rayon);padding:28px;box-shadow:var(--ombre);border:1px solid #eee
+    }
+    .about-illu{
+      background:radial-gradient(1200px 480px at 30% 20%,rgba(212,175,55,.07),transparent 60%),linear-gradient(180deg,#fff,rgba(255,255,255,.7));
+      border:1px solid #eee;border-radius:var(--rayon);height:100%;
+      display:grid;place-items:center;padding:18px;box-shadow:var(--ombre)
+    }
+    .about-illu img{max-width:88%;height:auto;opacity:.92}
+
+    /* ---------------- ÉQUIPE ---------------- */
+    .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:20px}
+    .card{
+      background:#fff;border-radius:var(--rayon);padding:22px;text-align:center;border:1px solid #eee;box-shadow:var(--ombre);
+      transition:transform .25s, box-shadow .25s
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.14)}
+    .card img{width:170px;height:170px;border-radius:50%;object-fit:cover;border:3px solid var(--or);margin:4px auto 12px;display:block}
+    .card h4{margin:6px 0 4px;font:700 22px/1.2 'Playfair Display',serif;color:var(--bleu)}
+    .role{font-weight:700;color:#4b4b4b}
+    .tag{display:inline-block;margin-top:8px;padding:6px 10px;border-radius:999px;background:#fff7d9;border:1px solid #ffe8a6;font-size:13px}
+
+    /* ---------------- PÔLES (expand inline) ---------------- */
+    .poles{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+    .pole{background:#fff;border:1px solid #eee;border-radius:var(--rayon);padding:22px;box-shadow:var(--ombre);cursor:pointer;transition:.25s}
+    .pole:hover{transform:translateY(-4px)}
+    .pole h4{margin:0 0 6px;font:700 20px 'Playfair Display',serif;color:var(--bleu)}
+    .pole small{color:#666;font-style:italic}
+    .details{display:none;margin-top:14px;padding:16px;border-left:5px solid var(--or);background:#fffbea;border-radius:10px}
+    .members{margin-top:10px;color:#444;font-style:italic}
+
+    /* ---------------- ADHÉSION ---------------- */
+    .adhesion{background:linear-gradient(180deg,#fff, #fff9e7);border:1px solid #f3e7bb;border-radius:var(--rayon);box-shadow:var(--ombre);padding:26px}
+    .benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:10px}
+    .benefit{background:#fff;border:1px solid #eee;border-radius:12px;padding:14px 16px}
+    .benefit b{color:var(--bleu)}
+
+    /* ---------------- ÉVÉNEMENTS (timeline) ---------------- */
+    .timeline{position:relative;margin-top:16px}
+    .timeline::before{
+      content:"";position:absolute;left:18px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--or),#ffe08a);border-radius:3px
+    }
+    .event{
+      position:relative;margin:22px 0 22px 0;padding-left:58px
+    }
+    .event::before{
+      content:"";position:absolute;left:10px;top:4px;width:20px;height:20px;border-radius:50%;
+      background:linear-gradient(135deg,var(--or),#ffd97a);box-shadow:0 0 0 6px rgba(212,175,55,.18)
+    }
+    .event .card{ text-align:left }
+    .badge{display:inline-block;background:#0a1f44;color:#fff;border-radius:8px;padding:4px 8px;font-size:12px;margin-right:8px}
+
+    /* ---------------- FOOTER ---------------- */
+    footer{
+      background:linear-gradient(180deg,var(--bleu),#061028);
+      color:#fff;text-align:center;padding:46px 16px;margin-top:74px
+    }
+    .partners{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+    .partners img{max-height:66px;width:auto;opacity:.95;transition:transform .25s}
+    .partners img:hover{transform:scale(1.05)}
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width:920px){
+      .grid-about{grid-template-columns:1fr}
+      .about-illu{min-height:240px}
+      header .brand h1{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <img src="Logo.png" alt="Logo Les Caves d'Albert">
+      <h1>Les Caves d’Albert</h1>
+    </div>
+    <nav>
+      <a href="#about" class="link">À propos</a>
+      <a href="#team" class="link">Équipe</a>
+      <a href="#poles" class="link">Pôles</a>
+      <a href="#adhesion" class="link">Adhésion</a>
+      <a href="#events" class="link">Événements</a>
+      <a href="#contact" class="link">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h2>Les Caves d’Albert</h2>
+      <p>Association œnologique de l’Albert School – dégustations, masterclass, découvertes de terroirs & art de vivre à la française.</p>
+      <a class="cta" href="#adhesion">Rejoindre la communauté</a>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="about" data-animate>
+    <h3>🏛️ À propos</h3>
+    <div class="grid-about">
+      <div class="about-card">
+        <p>Les Caves d’Albert est l’association œnologique de l’Albert School, fondée par des étudiants pour des étudiants passionnés de vin, de culture française et de convivialité.</p>
+        <p>Notre mission est de promouvoir le patrimoine viticole et gastronomique français, tout en créant des moments d’échanges authentiques et pédagogiques entre étudiants, professeurs et professionnels du secteur. L'association s’inscrit dans une démarche de transmission du savoir-faire français et de découverte sensorielle.</p>
+        <p>Elle met en avant l’art de vivre à la française, à travers des ateliers, dégustations et visites de domaines viticoles, où se rencontrent curiosité, élégance et plaisir du partage.</p>
+        <p>Les Caves d’Albert ont également pour vocation d’être un pont culturel entre les étudiants français et internationaux de l’école. Nos activités sont majoritairement bilingues (FR/EN).</p>
+        <p><b>Nos valeurs :</b><br>
+          🍇 Apprentissage – œnologie, viticulture durable, économie du vin.<br>
+          🤝 Convivialité – cohésion entre promotions et pôles.<br>
+          🇫🇷 Culture – terroirs, maisons, artisans du goût.<br>
+          🌍 Ouverture internationale – rayonnement du savoir-faire français.<br>
+          💡 Élégance & créativité – image raffinée, moderne et responsable.
+        </p>
+      </div>
+      <div class="about-illu">
+        <img src="Logo.png" alt="Filigrane Les Caves d'Albert">
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉQUIPE -->
+  <section id="team" data-animate>
+    <h3>👥 Notre équipe</h3>
+    <div class="team">
+      <div class="card">
+        <img src="Vignette Max.png" alt="Maxandre MICHEL">
+        <h4>Maxandre MICHEL</h4>
+        <div class="role">Président</div>
+        <div class="tag">Master 2 – Data for Business</div>
+      </div>
+      <div class="card">
+        <img src="Vignette Louis.png" alt="Louis PIMONT-NISHIMURA">
+        <h4>Louis PIMONT-NISHIMURA</h4>
+        <div class="role">Vice-président & Trésorier</div>
+        <div class="tag">Master 1 – Data for Business</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÔLES -->
+  <section id="poles" data-animate>
+    <h3>⚙️ Nos pôles</h3>
+    <div class="poles">
+      <div class="pole" onclick="toggleDetails('comm')">
+        <h4>Pôle Communication</h4>
+        <small>Poste vacant</small>
+        <div id="comm" class="details">
+          <p><b>Rôle :</b> gestion des réseaux sociaux, identité visuelle, affiches & campagnes, couverture photo/vidéo des événements.</p>
+          <div class="members"><b>Membres :</b> Aucun pour l’instant</div>
+        </div>
+      </div>
+
+      <div class="pole" onclick="toggleDetails('dem')">
+        <h4>Pôle Démarchage</h4>
+        <small>Poste vacant</small>
+        <div id="dem" class="details">
+          <p><b>Rôle :</b> partenariats, sponsors, relation avec les domaines, cavistes, bars à vin et maisons de spiritueux.</p>
+          <div class="members"><b>Membres :</b> Aucun pour l’instant</div>
+        </div>
+      </div>
+
+      <div class="pole" onclick="toggleDetails('event')">
+        <h4>Pôle Événementiel</h4>
+        <small>Poste vacant</small>
+        <div id="event" class="details">
+          <p><b>Rôle :</b> programmation, logistique, masterclass, dégustations thématiques et escapades dans les vignes.</p>
+          <div class="members"><b>Membres :</b> Aucun pour l’instant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADHÉSION -->
+  <section id="adhesion" data-animate>
+    <h3>🎟️ Adhésion</h3>
+    <div class="adhesion">
+      <p>Pour le prix d’une bonne bouteille, profite d’avantages tout au long de l’année :</p>
+      <div class="benefits">
+        <div class="benefit"><b>Accès prioritaire</b><br>Ventes en avant-première & places garanties.</div>
+        <div class="benefit"><b>Tarifs réduits</b><br>Sur les dégustations, ateliers & (bientôt) marketplace.</div>
+        <div class="benefit"><b>Événements exclusifs</b><br>Soirées privées, masterclass d’experts, dégustations.</div>
+        <div class="benefit"><b>Communauté privée</b><br>WhatsApp pour échanger au quotidien.</div>
+        <div class="benefit"><b>Partenaires</b><br>Réductions chez cavistes, bars à vin & producteurs.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉVÉNEMENTS (TIMELINE) -->
+  <section id="events" data-animate>
+    <h3>📅 Événements à venir</h3>
+    <div class="timeline">
+      <div class="event">
+        <div class="card">
+          <div class="badge">Octobre</div><div class="badge">Paris 10e</div>
+          <h4 style="margin:.3rem 0 .4rem">Soirée de lancement – Dégustation “Découverte”</h4>
+          <p>Présentation de l’association, initiation aux bases de la dégustation, rencontre avec les membres et partenaires de l’école.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="card">
+          <div class="badge">Novembre</div><div class="badge">Masterclass</div>
+          <h4 style="margin:.3rem 0 .4rem">Bourgogne vs Bordeaux – Comprendre les styles</h4>
+          <p>Comparatif guidé avec cartes, terroirs, cépages et typicités. Places limitées, priorité aux adhérents.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="card">
+          <div class="badge">Décembre</div><div class="badge">Visite</div>
+          <h4 style="margin:.3rem 0 .4rem">Escapade dans les vignes (Île-de-France)</h4>
+          <p>Sortie pédagogique : rencontre d’un vigneron, visite de chai, atelier assemblage. Détails annoncés prochainement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-animate>
+    <h3>✉️ Contact</h3>
+    <p>📍 18, rue Paradis, 75010 Paris<br/>
+       📧 <a href="mailto:mmichel@albertschool.com">mmichel@albertschool.com</a><br/>
+       📸 Instagram : <a href="https://www.instagram.com/LesCavesDalbert" target="_blank">@LesCavesDalbert</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Les Caves d’Albert – Association loi 1901 | Albert School × Mines Paris PSL</p>
+    <div class="partners">
+      <img src="Logo.png" alt="Les Caves d'Albert">
+      <img src="Logo_AS_x_Mines_PSL.png" alt="Albert School x Mines Paris PSL">
+    </div>
+  </footer>
+
+  <script>
+    // Apparition au scroll & mise en surbrillance du menu
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('visible');
+      });
+    },{threshold:.18});
+    document.querySelectorAll('[data-animate]').forEach(el=>observer.observe(el));
+
+    const links = document.querySelectorAll('nav .link');
+    const sections = [...links].map(a=>document.querySelector(a.getAttribute('href')));
+    const highlight = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+entry.target.id));
+        }
+      });
+    },{threshold:.6});
+    sections.forEach(s=>s && highlight.observe(s));
+
+    // Toggle détails des pôles (ouverture unique)
+    function toggleDetails(id){
+      const cur = document.getElementById(id);
+      document.querySelectorAll('.details').forEach(d=>{ if(d!==cur) d.style.display='none';});
+      cur.style.display = (cur.style.display==='block') ? 'none' : 'block';
+      cur.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    window.toggleDetails = toggleDetails;
+  </script>
+</body>
+</html>
