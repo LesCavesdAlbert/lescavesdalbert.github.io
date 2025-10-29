@@ -1,77 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Les Caves d'Albert — Événements</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Caves d'Albert</title>
+  <style>
+    body {font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: #faf9f6; color: #2b2b2b;}
+    header {background-color: #0a1f44; color: #d4af37; text-align: center; padding: 2rem 1rem;}
+    nav a {color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold;}
+    section {padding: 3rem 1.5rem; max-width: 900px; margin: auto;}
+    h2 {color: #0a1f44; border-bottom: 2px solid #d4af37; display: inline-block; padding-bottom: 5px;}
+    .poles {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;}
+    .pole {border: 1px solid #ddd; border-radius: 10px; padding: 1.5rem; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    footer {text-align: center; padding: 2rem 1rem; background-color: #0a1f44; color: #fff;}
+    .adhesion {background-color: #fffbea; border-left: 5px solid #d4af37; padding: 1.5rem; border-radius: 10px;}
+    .event {border: 1px solid #ddd; border-radius: 10px; padding: 1.5rem; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 1rem;}
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#">
-        <img src="assets/logo.png" alt="Les Caves d'Albert" class="logo">
-        <span class="brand-name">Les Caves d'Albert</span>
-      </a>
-      <nav class="nav">
-        <a href="#evenements">Événements</a>
-        <a href="#actus">Actualités</a>
-        <a href="#equipe">Équipe</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+  <header>
+    <h1>Les Caves d'Albert</h1>
+    <nav>
+      <a href="#about">À propos</a>
+      <a href="#poles">Nos pôles</a>
+      <a href="#adhesion">Adhésion</a>
+      <a href="#events">Événements</a>
+      <a href="#actus">Actualités</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Les Caves d'Albert</h1>
-      <p>Vins &amp; spiritueux — dégustations, rencontres &amp; bons moments</p>
+  <section id="about">
+    <h2>À propos</h2>
+    <p><strong>Les Caves d’Albert</strong> est l’association œnologique de l’Albert School, fondée par des étudiants passionnés de vin et de convivialité. Notre mission : faire découvrir le patrimoine viticole français et les savoir-faire artisanaux, à travers des dégustations, masterclass et événements culturels.</p>
+    <p>Nous organisons également des événements en anglais pour permettre à nos étudiants internationaux de participer pleinement à cette aventure gustative et culturelle.</p>
+  </section>
+
+  <section id="poles">
+    <h2>Nos pôles</h2>
+    <div class="poles">
+      <div class="pole"><h3>Pôle Communication</h3><p><em>Poste vacant</em></p></div>
+      <div class="pole"><h3>Pôle Démarchage</h3><p><em>Poste vacant</em></p></div>
+      <div class="pole"><h3>Pôle Événementiel</h3><p><em>Poste vacant</em></p></div>
     </div>
   </section>
 
-  <main class="container">
-    <section id="evenements">
-      <h2>Événements</h2>
-      <article class="event">
-        <h3>23 octobre 2025 — Premier Verre d'Albert</h3>
-        <p><strong>Au menu :</strong> Marcillac (rouge, 100% Fer Servadou) &amp; “Le Vilain Petit Canard” (blanc, 100% Petit Manseng).</p>
-        <p><strong>Tarifs :</strong> 4€ le verre (rouge & blanc) · 18€ la bouteille (rouge & blanc) · 4€ la bière.</p>
-      </article>
-
-      <article class="event">
-        <h3>30 octobre 2025 — Le Premier Verre revient</h3>
-        <p><strong>Au menu :</strong> Chablis Grand Cru (blanc) &amp; Saint‑Émilion Grand Cru (rouge) + bière.</p>
-        <p><strong>Tarifs :</strong> identiques à la semaine dernière — 4€ le verre (vins &amp; bière) · 18€ la bouteille (rouge & blanc).</p>
-      </article>
-
-      <article class="event">
-        <h3>Tous les jeudis — Soirée “Le Premier Verre”</h3>
-        <p>Retrouvez‑nous chaque jeudi. Les cuvées seront annoncées en amont (sélection en cours).</p>
-      </article>
-    </section>
-
-    <section id="actus">
-      <h2>Actualités</h2>
-      <p>Un événement <strong>dégustation</strong> est en préparation. Les détails arrivent très bientôt — nous vous tiendrons informés.</p>
-    </section>
-
-    <section id="equipe">
-      <h2>Équipe</h2>
+  <section id="adhesion">
+    <h2>Que comprend l’adhésion aux Caves d’Albert ?</h2>
+    <div class="adhesion">
+      <p>Adhérer, c’est entrer dans un cercle de passionnés, vivre des expériences uniques autour du vin et des spiritueux, et accéder à des avantages privilégiés tout au long de l’année 🍷</p>
+      <p>En résumé, pour le prix d’une bonne bouteille, l’adhésion t’apporte :</p>
       <ul>
-        <li><strong>Pôle Communication :</strong> Matthieu Dolfus</li>
-        <li><strong>Pôle Logistique événementielle :</strong> Laura Oldakoswski, Emma Neumayer</li>
-        <li><strong>Pôle Démarchage :</strong> Rudy Causel, Rayane</li>
+        <li>🎟️ <strong>Accès prioritaire aux dégustations</strong> : Bénéficie des ventes en avant-première et assure-toi une place à chaque événement.</li>
+        <li>💸 <strong>Tarifs réduits sur tous les événements</strong> : Grâce à ta cotisation, tu bénéficies d’un tarif préférentiel à chaque dégustation ou atelier, ainsi que sur notre future market place dédiée aux vins des étudiants de l’école.</li>
+        <li>🥂 <strong>Événements exclusifs réservés aux membres</strong> : Soirées privées, masterclass, dégustations rares ou escapades dans les vignes.</li>
+        <li>📲 <strong>Accès à la communauté privée</strong> : Rejoins notre groupe (WhatsApp ou Discord) pour discuter, partager et t’inspirer.</li>
+        <li>🤝 <strong>Réductions chez nos partenaires</strong> : Cavistes, bars à vin, producteurs : profite d’offres exclusives négociées pour nos membres.</li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Suivez‑nous sur Instagram et contactez‑nous par e‑mail.</p>
-    </section>
-  </main>
+  <section id="events">
+    <h2>Événements à venir</h2>
+    <article class="event">
+      <h3>23 octobre 2025 — Premier Verre d'Albert</h3>
+      <p><strong>Au menu :</strong> Marcillac (rouge, 100% Fer Servadou) &amp; “Le Vilain Petit Canard” (blanc, 100% Petit Manseng).</p>
+      <p><strong>Tarifs :</strong> 4€ le verre (rouge &amp; blanc) · 18€ la bouteille (rouge &amp; blanc) · 4€ la bière.</p>
+    </article>
 
-  <footer class="site-footer">
-    <p>© 2025 Les Caves d'Albert — Vins &amp; Spiritueux</p>
+    <article class="event">
+      <h3>30 octobre 2025 — Le Premier Verre revient</h3>
+      <p><strong>Au menu :</strong> Chablis Grand Cru (blanc) &amp; Saint‑Émilion Grand Cru (rouge) + bière.</p>
+      <p><strong>Tarifs :</strong> identiques à la semaine dernière — 4€ le verre (vins &amp; bière) · 18€ la bouteille (rouge &amp; blanc).</p>
+    </article>
+
+    <article class="event">
+      <h3>Tous les jeudis — Soirée “Le Premier Verre”</h3>
+      <p>Retrouvez‑nous chaque jeudi. Les cuvées seront annoncées en amont (sélection en cours).</p>
+    </article>
+  </section>
+
+  <section id="actus">
+    <h2>Actualités</h2>
+    <p>Un événement <strong>dégustation</strong> est en préparation. Les détails arrivent très bientôt — nous vous tiendrons informés.</p>
+  </section>
+
+  <section id="equipe">
+    <h2>Équipe</h2>
+    <ul>
+      <li><strong>Pôle Communication :</strong> Matthieu Dolfus</li>
+      <li><strong>Pôle Logistique événementielle :</strong> Laura Oldakoswski, Emma Neumayer</li>
+      <li><strong>Pôle Démarchage :</strong> Rudy Causel, Rayane</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Nous contacter</h2>
+    <p>📍 18, rue Paradis, 75010 Paris<br>
+       📧 <a href="mailto:mmichel@albertschool.com">mmichel@albertschool.com</a><br>
+       📸 Instagram : <a href="https://www.instagram.com/LesCavesDalbert" target="_blank">@LesCavesDalbert</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Les Caves d’Albert – Association loi 1901 | Albert School</p>
   </footer>
 </body>
 </html>
