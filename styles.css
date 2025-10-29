@@ -1,0 +1,8 @@
+
+body {font-family: Arial, sans-serif; background:#0d0d0d; color:white; margin:0;}
+.container {width:90%; margin:auto;}
+header {background:#111; padding:10px 0; position:sticky; top:0;}
+.nav a {color:white; margin:0 10px; text-decoration:none;}
+.hero {background:url('https://lescavesdalbert.github.io/') center/cover no-repeat; height:300px; display:flex; flex-direction:column; justify-content:center; align-items:center;}
+.event {background:#222; padding:10px; border-radius:10px; margin:10px 0;}
+footer {background:#111; text-align:center; padding:20px;}
